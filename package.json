@@ -1,0 +1,25 @@
+{
+  "name": "storybook-addon-mantine",
+  "version": "0.1.0",
+  "description": "Addon for storybook which wraps Mantine components with a MantineProvider. Allows you to switch between themes and see how your components and pages will look.",
+  "main": "dist/preset.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josiahayres/storybook-addon-mantine.git"
+  },
+  "keywords": [
+    "Storybook",
+    "Mantine",
+    "React",
+    "Themes"
+  ],
+  "author": "josiahayres",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/josiahayres/storybook-addon-mantine/issues"
+  },
+  "homepage": "https://github.com/josiahayres/storybook-addon-mantine#readme"
+}
