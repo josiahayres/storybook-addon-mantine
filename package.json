@@ -12,7 +12,7 @@
     "build": "babel ./src --out-dir ./dist",
     "test": "test",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o docs-build"
   },
   "repository": {
     "type": "git",
