@@ -97,24 +97,7 @@ class AddonPanel extends React.Component {
 
     return (
       <div>
-        <h1>Mantine Theme</h1>
-        <p>
-          You can add your own themes by adding themes to{" "}
-          <b>
-            <code>.storybook/preview.js</code>
-          </b>
-          :
-          <br />
-          <br />
-          <code>{`import {mantineTheme} from "../src/mantineTheme";`}</code>
-          <br />
-          <br />
-          <code>{`export const decorators = [`}</code>
-          <br />
-          <code>{`  mantineTheme([{ themeName: "Custom" }, { themeName: "Custom 2" }]),`}</code>
-          <br />
-          <code>{`];`}</code>
-        </p>
+        <h1>Mantine Themes</h1>
         <Dropdown
           selected={data.themeInd}
           title="Current Theme"
