@@ -1,25 +1,113 @@
 {
   "name": "storybook-addon-mantine",
   "version": "0.1.0",
-  "description": "Addon for storybook which wraps Mantine components with a MantineProvider. Allows you to switch between themes and see how your components and pages will look.",
+  "description": "Addon for storybook which gives all stories a MantineProvider. Gives you the ability to visualise and switch between mantine themes and see how your components and pages will look with the theme applied!",
   "main": "dist/preset.js",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js"
+  ],
   "scripts": {
-    "test": "test"
+    "build": "babel ./src --out-dir ./dist",
+    "test": "test",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/josiahayres/storybook-addon-mantine.git"
   },
   "keywords": [
-    "Storybook",
-    "Mantine",
-    "React",
-    "Themes"
+    "storybook-addons",
+    "style",
+    "debug",
+    "layout",
+    "mantine",
+    "emotion",
+    "storybook",
+    "react",
+    "theme"
   ],
   "author": "josiahayres",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/josiahayres/storybook-addon-mantine/issues"
   },
-  "homepage": "https://github.com/josiahayres/storybook-addon-mantine#readme"
+  "homepage": "https://github.com/josiahayres/storybook-addon-mantine#readme",
+  "dependencies": {
+    "@babel/cli": "^7.18.6",
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@mantine/core": "^4.2.12",
+    "@mantine/dates": "^4.2.12",
+    "@mantine/dropzone": "^4.2.12",
+    "@mantine/form": "^4.2.12",
+    "@mantine/hooks": "^4.2.12",
+    "@mantine/modals": "^4.2.12",
+    "@mantine/notifications": "^4.2.12",
+    "@mantine/prism": "^4.2.12",
+    "@mantine/rte": "^4.2.12",
+    "@mantine/spotlight": "^4.2.12",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {
+    "@mantine/core": "^1.0.0 || ^3.0.0 || ^4.0.0",
+    "@mantine/dates": "^1.0.0 || ^3.0.0 || ^4.0.0",
+    "@mantine/dropzone": "^1.0.0 || ^3.0.0 || ^4.0.0",
+    "@mantine/form": "^1.0.0 || ^3.0.0 || ^4.0.0",
+    "@mantine/hooks": "^1.0.0 || ^3.0.0 || ^4.0.0",
+    "@mantine/modals": "^1.0.0 || ^3.0.0 || ^4.0.0",
+    "@mantine/next": "^1.0.0 || ^3.0.0 || ^4.0.0",
+    "@mantine/notifications": "^1.0.0 || ^3.0.0 || ^4.0.0",
+    "@mantine/prism": "^1.0.0 || ^3.0.0 || ^4.0.0",
+    "@mantine/rte": "^1.0.0 || ^3.0.0 || ^4.0.0",
+    "@mantine/spotlight": "^1.0.0 || ^3.0.0 || ^4.0.0",
+    "@storybook/addon-actions": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
+    "@storybook/addon-essentials": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
+    "@storybook/addon-interactions": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
+    "@storybook/addon-links": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
+    "@storybook/addons": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
+    "@storybook/builder-webpack4": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
+    "@storybook/manager-webpack4": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
+    "@storybook/react": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
+    "babel-loader": "^8.0.0",
+    "dayjs": "^1.0.0",
+    "prop-types": "^15.0.0",
+    "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0",
+    "webpack": "^2.0.0  || ^4.0.0 || ^5.0.0"
+  },
+  "storybook": {
+    "displayName": "storybook-addon-mantine",
+    "unsupportedFrameworks": [
+      "vue",
+      "angular",
+      "web-components",
+      "ember",
+      "html",
+      "svelte",
+      "preact",
+      "aurelia",
+      "marionette",
+      "react-native"
+    ],
+    "supportedFrameworks": [
+      "react"
+    ],
+    "icon": "https://raw.githubusercontent.com/mantinedev/mantine/master/docs/src/images/og-image.png"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/addons": "^6.5.9",
+    "@storybook/builder-webpack4": "^6.5.9",
+    "@storybook/manager-webpack4": "^6.5.9",
+    "@storybook/react": "^6.5.9",
+    "babel-loader": "^8.2.5",
+    "dayjs": "^1.11.3"
+  }
 }
