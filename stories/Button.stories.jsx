@@ -9,6 +9,29 @@ export default {
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     compact: { control: "boolean", defaultValue: false },
+    variant: {
+      control: "select",
+      options: ["filled", "light", "outline", "default", "subtle"],
+    },
+    color: {
+      control: "select",
+      options: [
+        "dark",
+        "gray",
+        "red",
+        "pink",
+        "grape",
+        "violet",
+        "indego",
+        "blue",
+        "cyan",
+        "teal",
+        "green",
+        "lime",
+        "yellow",
+        "orange",
+      ],
+    },
   },
 
   args: {
