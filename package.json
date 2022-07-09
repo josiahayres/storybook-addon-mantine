@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/josiahayres/storybook-addon-mantine/issues"
   },
-  "homepage": "https://github.com/josiahayres/storybook-addon-mantine#readme",
+  "homepage": "https://josiahayres.github.io/storybook-addon-mantine/",
   "dependencies": {
     "@babel/cli": "^7.18.6",
     "@babel/core": "^7.18.6",

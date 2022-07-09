@@ -1,4 +1,4 @@
-import { mantineTheme } from "../src/mantineTheme";
+import { mantineTheme } from "storybook-addon-mantine";
 
 export const decorators = [
   mantineTheme([{ primaryColor: "green" }, { themeName: "Custom 2" }]),
