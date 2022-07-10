@@ -10,6 +10,7 @@ export default {
   argTypes: {
     compact: { control: "boolean", defaultValue: false },
     uppercase: { control: "boolean", defaultValue: false },
+    disabled: { control: "boolean", defaultValue: false },
     variant: {
       control: "select",
       options: ["filled", "light", "outline", "default", "subtle"],
