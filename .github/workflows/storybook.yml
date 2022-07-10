@@ -1,7 +1,7 @@
-name: Storybook Build and Deploy
+name: Build and Deploy
 on:
   push:
-    paths: ["../src/mantine_components/**"] # Trigger the action only when files change in the folders defined here
+    paths: ["stories/**", "src/stories/**"] # Trigger the action only when files change in the folders defined here
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
