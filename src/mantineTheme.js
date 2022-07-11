@@ -6,13 +6,12 @@ import { createStore } from "./adk/decorator";
 
 const lightBaseTheme = {
   colorScheme: "light",
+  themeName: "Light Theme",
 };
 const darkBaseTheme = {
   colorScheme: "dark",
+  themeName: "Dark Theme",
 };
-
-lightBaseTheme.themeName = "Light Theme";
-darkBaseTheme.themeName = "Dark Theme";
 
 export function mantineTheme(themes) {
   const store = createStore(
