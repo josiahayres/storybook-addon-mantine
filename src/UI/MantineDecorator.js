@@ -14,13 +14,11 @@ const currentTheme = (data) => {
 };
 
 const MantineDecorator = ({ data, story }) => {
+  const theme = currentTheme(data);
   console.log("MantineDecorator");
+
   return (
-    <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      theme={currentTheme(data)}
-    >
+    <MantineProvider theme={theme} {...data?.themeProviderProps}>
       {story}
     </MantineProvider>
   );

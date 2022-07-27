@@ -13,7 +13,7 @@ const darkBaseTheme = {
   themeName: "Dark Theme",
 };
 
-export function mantineTheme(themes) {
+export function mantineTheme(themes, args = {}) {
   const store = createStore(
     EVENT_ID_INIT,
     EVENT_ID_DATA,
@@ -46,7 +46,11 @@ export function mantineTheme(themes) {
   }
 
   store.onConnected(() =>
-    store.sendInit({ themes: themesInitList, themeInd: 0 })
+    store.sendInit({
+      themes: themesInitList,
+      themeInd: 0,
+      themeProviderProps: args,
+    })
   );
 
   return (story) => {
@@ -54,7 +58,11 @@ export function mantineTheme(themes) {
     return (
       <MantineDecorator
         story={storyItem}
-        initData={{ themes: themesInitList, themeInd: 0 }}
+        initData={{
+          themes: themesInitList,
+          themeInd: 0,
+          themeProviderArgs: args,
+        }}
       />
     );
   };

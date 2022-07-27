@@ -50,6 +50,16 @@ export const decorators = [
 ];
 ```
 
+## Versions
+
+### 1.1
+
+Support Mantine v5 (https://mantine.dev/changelog/5-0-0/)
+
+### 1.0
+
+Initial release
+
 ## Thanks
 
 Thank you to the creators of [storybook-addon-material-ui](https://github.com/react-theming/storybook-addon-material-ui) - your project demonstrated how to connect the panel with the preview wrapper.

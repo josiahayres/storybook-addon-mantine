@@ -1,7 +1,17 @@
-import { mantineTheme } from "storybook-addon-mantine";
+import { mantineTheme } from "../src/mantineTheme";
+
+const myTheme = {
+  colorScheme: "light",
+  primaryColor: "orange",
+  defaultRadius: 0,
+};
 
 export const decorators = [
-  mantineTheme([{ primaryColor: "green" }, { themeName: "Custom 2" }]),
+  mantineTheme([myTheme], {
+    withCSSVariables: true,
+    withGlobalStyles: true,
+    withNormalizeCSS: true,
+  }),
 ];
 
 export const parameters = {
