@@ -61,7 +61,7 @@ export function mantineTheme(themes, args = {}) {
         initData={{
           themes: themesInitList,
           themeInd: 0,
-          themeProviderArgs: args,
+          themeProviderProps: args,
         }}
       />
     );

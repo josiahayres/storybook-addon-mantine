@@ -4,7 +4,7 @@ Addon for storybook which wraps Mantine components with a MantineProvider. Allow
 
 ## How to use
 
-### Install the addon:
+### Install the addon
 
 ```shell
 npm i -D storybook-addon-mantine
@@ -37,24 +37,65 @@ Do this in your `.storybook/preview.js` file:
 import { mantineTheme } from "storybook-addon-mantine";
 import { lightTheme } from "../themes/light";
 
+// These props are passed to the MantineProvider used by all stories.
+const mantineProviderProps = {
+  withCSSVariables: false,
+  withGlobalStyles: true,
+  withNormalizeCSS: false,
+};
+
 export const decorators = [
-  mantineTheme([
-    { ...lightTheme, themeName: "Light Mode" },
-    {
-      themeName: "Dark Mode - Green",
-      primaryColor: "green",
-      colorScheme: "dark",
-      radius: 0,
-    },
-  ]),
+  mantineTheme(
+    [
+      { ...lightTheme, themeName: "Light Mode" },
+      {
+        themeName: "Dark Mode - Green",
+        primaryColor: "green",
+        colorScheme: "dark",
+        radius: 0,
+      },
+    ],
+    mantineProviderProps
+  ),
 ];
+```
+
+> **Info:** It's highly recommended to set `withGlobalStyles` to true if you use dark mode.  
+> To learn more about what it does, check out https://mantine.dev/theming/mantine-provider/#css-reset-and-global-styles
+
+## Options
+
+### `mantineTheme(themesList, mantineProviderProps)`
+
+Should be passed to exported decorators array in `.storybook/preview.js`.
+
+### `themesList`
+
+List of themes to show inside Storybook.
+Each theme should be a valid [Mantine Theme Override Object](https://mantine.dev/theming/theme-object/#store-theme-override-object-in-a-variable).
+
+### `mantineProviderProps`
+
+> Added in `storybook-addon-mantine` version 1.1
+
+This is an object of props to pass to the `MantineProvider` component.
+
+Typically it'll look like
+
+```js static
+const mantineProviderProps = {
+  withCSSVariables: true,
+  withGlobalStyles: true,
+  withNormalizeCSS: true,
+};
 ```
 
 ## Versions
 
 ### 1.1
 
-Support Mantine v5 (https://mantine.dev/changelog/5-0-0/)
+- Support Mantine v5 (https://mantine.dev/changelog/5-0-0/).
+- Adds second parameter `mantineProviderProps` to `mantineTheme(themesList, mantineProviderProps)`
 
 ### 1.0
 

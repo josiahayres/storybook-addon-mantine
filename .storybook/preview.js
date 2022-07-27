@@ -1,16 +1,15 @@
 import { mantineTheme } from "../src/mantineTheme";
 
 const myTheme = {
-  colorScheme: "light",
+  colorScheme: "dark",
   primaryColor: "orange",
-  defaultRadius: 0,
 };
 
 export const decorators = [
   mantineTheme([myTheme], {
-    withCSSVariables: true,
+    withCSSVariables: false,
     withGlobalStyles: true,
-    withNormalizeCSS: true,
+    withNormalizeCSS: false,
   }),
 ];
 

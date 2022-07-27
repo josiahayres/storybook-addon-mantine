@@ -8,14 +8,13 @@ const currentTheme = (data) => {
     const theme = data.themes[data.themeInd];
     return theme;
   } catch (err) {
-    console.log(err);
+    console.log("Failed to get current theme.", err);
     return {};
   }
 };
 
 const MantineDecorator = ({ data, story }) => {
   const theme = currentTheme(data);
-  console.log("MantineDecorator");
 
   return (
     <MantineProvider theme={theme} {...data?.themeProviderProps}>
