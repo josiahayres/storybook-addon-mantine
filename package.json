@@ -57,7 +57,7 @@
     "@mantine/prism": "^1.0.0 || ^3.0.0 || ^4.0.0  || ^5.0.0",
     "@mantine/rte": "^1.0.0 || ^3.0.0 || ^4.0.0  || ^5.0.0",
     "@mantine/spotlight": "^1.0.0 || ^3.0.0 || ^4.0.0  || ^5.0.0",
-    "embla-carousel-react": "^6.0.0",
+    "embla-carousel-react": "^6.0.0 || ^7.0.0",
     "@mantine/next": "^1.0.0 || ^3.0.0 || ^4.0.0  || ^5.0.0",
     "@storybook/addon-actions": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
     "@storybook/addon-essentials": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
