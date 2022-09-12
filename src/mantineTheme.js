@@ -28,11 +28,6 @@ export function mantineTheme(themes, args = {}) {
       themesInitList = themes;
       themesInitList.forEach((val, ind) => {
         if (typeof val === "string") {
-          /* note: unsupported names goes as lightBaseTheme
-          if (val === lightBaseTheme.themeName) {
-              themesInitList[ind] = lightBaseTheme;
-          }
-          */
           if (val === darkBaseTheme.themeName) {
             themesInitList[ind] = darkBaseTheme;
           } else {
