@@ -5,8 +5,13 @@ const myTheme = {
   primaryColor: "orange",
 };
 
+const light = {
+  colorScheme: "light",
+  primaryColor: "blue",
+};
+
 export const decorators = [
-  mantineTheme([myTheme], {
+  mantineTheme([myTheme, light], {
     withCSSVariables: false,
     withGlobalStyles: true,
     withNormalizeCSS: false,
