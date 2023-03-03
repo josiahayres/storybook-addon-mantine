@@ -92,6 +92,15 @@ const mantineProviderProps = {
 
 ## Versions
 
+### 1.3
+
+- Support Mantine v6 (https://mantine.dev/changelog/6-0-0/).
+- Only Require `@mantine/core` as peer dependency
+
+### 1.2
+
+- Update peer dependencies
+
 ### 1.1
 
 - Support Mantine v5 (https://mantine.dev/changelog/5-0-0/).
