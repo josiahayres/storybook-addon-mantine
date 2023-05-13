@@ -40,6 +40,16 @@ export const withMantineThemes = (props: Props) => {
           [PARAM_KEYS.THEME_ID]: props.themes?.[0]?.id,
         });
       }
+      if  (themes.length < 1 && props.themes.length > 0){
+        updateGlobals({
+          [PARAM_KEYS.THEMES]: props.themes,
+          [PARAM_KEYS.SELECT_DATA]: [{
+            label: `Light`,
+            value: 'light',
+          }],
+          [PARAM_KEYS.THEME_ID]: 'light',
+        });
+      }
     }, [props.themes]);
 
     const theme = globals[PARAM_KEYS.THEMES].find(
