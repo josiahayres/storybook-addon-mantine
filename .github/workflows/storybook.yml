@@ -21,5 +21,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: main # The branch the action should deploy to.
           FOLDER: storybook-static # The folder that the build-storybook script generates files.
-          CLEAN: true # Automatically remove deleted files from the deploy branch
+          CLEAN: false # Automatically remove deleted files from the deploy branch
           TARGET_FOLDER: docs # The folder that we serve our Storybook
