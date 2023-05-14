@@ -26,24 +26,4 @@ export const Outline: Story = {
     children: "Button",
   },
 };
-
-export const Large: Story = {
-  args: {
-    size: "lg",
-    children: "Button",
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: "sm",
-    children: "Button",
-  },
-};
-
-export const Compact: Story = {
-  args: {
-    compact: true,
-    children: "Button",
-  },
-};
+ 

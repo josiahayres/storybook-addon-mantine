@@ -21,7 +21,7 @@
     "prerelease": "zx scripts/prepublish-checks.mjs",
     "release": "yarn build && auto shipit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build -o docs-build"
   },
   "repository": {
     "type": "git",
@@ -58,15 +58,10 @@
     "@storybook/theming": "^7.0.0",
     "@storybook/types": "^7.0.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    },
-    "react-dom": {
-      "optional": true
-    }
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "@emotion/react": "^11.0.0",
+    "@mantine/core": "^6.0.0",
+    "@mantine/hooks": "^6.0.0"
   },
   "storybook": {
     "displayName": "storybook-addon-mantine",
