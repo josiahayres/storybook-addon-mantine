@@ -12,7 +12,7 @@ npm i -D storybook-addon-mantine
 
 ### Register the addon
 
-Do this in your project's `.storybook/main.ts` or `.storybook/main.js` file:
+Do this in your project's `.storybook/main.js` file:
 
 ```js
 module.exports = {
@@ -31,12 +31,10 @@ module.exports = {
 
 Do this in your `.storybook/preview.js` file:
 
-> **Info:** `id` is an new required key, must be unique string.
-
-> **Info:** `name` is an optional key you can provide here to override the name shown in the Storybook panel.
+> **Info:** `themeName` is an optional key you can provide here to override the name shown in the Storybook panel.
 
 ```js
-import { withMantineThemes } from "storybook-addon-mantine";
+import { mantineTheme } from "storybook-addon-mantine";
 import { lightTheme } from "../themes/light";
 
 // These props are passed to the MantineProvider used by all stories.
@@ -45,25 +43,20 @@ const mantineProviderProps = {
   withGlobalStyles: true,
   withNormalizeCSS: false,
 };
+
 export const decorators = [
-  withMantineThemes({
-    themes: [
-      { 
-        id: "Dark",
-        colorScheme: "dark" 
-      },
+  mantineTheme(
+    [
+      { ...lightTheme, themeName: "Light Mode" },
       {
-        id: "light-green",
-        name: "Light Green Theme",
-        ...lightTheme
+        themeName: "Dark Mode - Green",
+        primaryColor: "green",
+        colorScheme: "dark",
+        radius: 0,
       },
     ],
-    mantineProviderProps: {
-      withCSSVariables: true,
-      withGlobalStyles: true,
-      withNormalizeCSS: true,
-    },
-  }),
+    mantineProviderProps
+  ),
 ];
 ```
 
@@ -72,21 +65,18 @@ export const decorators = [
 
 ## Options
 
-### `withMantineThemes({themes, mantineProviderProps})`
+### `mantineTheme(themesList, mantineProviderProps)`
 
-Call this function inside the decorators array in `.storybook/preview.js`.
+Should be passed to exported decorators array in `.storybook/preview.js`.
 
-### `themes`
+### `themesList`
 
 List of themes to show inside Storybook.
 Each theme should be a valid [Mantine Theme Override Object](https://mantine.dev/theming/theme-object/#store-theme-override-object-in-a-variable).
 
-Additionally, each theme object must have:
-
-- `id: string` - required, this must be unique between themes
-- `name?: string` - optional, name to show in list to pick themes from.
-
 ### `mantineProviderProps`
+
+> Added in `storybook-addon-mantine` version 1.1
 
 This is an object of props to pass to the `MantineProvider` component.
 
@@ -101,12 +91,6 @@ const mantineProviderProps = {
 ```
 
 ## Versions
-
-### 2.0
-
-- Support for Storybook 7 - will not work with older versions of Storybook.
-- Rebuilt entire package using [AddonKit](https://github.com/storybookjs/addon-kit) and Typescript.
-- Keeps selected theme consistently when switching between component examples, rather than defaulting back to first theme every time.
 
 ### 1.3
 
@@ -125,3 +109,7 @@ const mantineProviderProps = {
 ### 1.0
 
 Initial release
+
+## Thanks
+
+Thank you to the creators of [storybook-addon-material-ui](https://github.com/react-theming/storybook-addon-material-ui) - your project demonstrated how to connect the panel with the preview wrapper.
