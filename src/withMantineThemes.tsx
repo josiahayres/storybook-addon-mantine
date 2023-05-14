@@ -29,7 +29,7 @@ type Props = {
 
 export const withMantineThemes = (props: Props, ...rest: any) => {
   return (
-    StoryFn: StoryFunction<Renderer>,
+    StoryFn: any,
     context: StoryContext<Renderer>
   ) => {
     const [globals, updateGlobals] = useGlobals();
@@ -57,6 +57,6 @@ export const withMantineThemes = (props: Props, ...rest: any) => {
       }
     }, [props.themes]);
 
-    return StoryFn(context)
+    return <StoryFn {...context} />
   }
 };
