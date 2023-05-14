@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-mantine",
-  "version": "2.0.20",
+  "version": "2.0.21",
   "description": "Addon for storybook which gives all stories a MantineProvider. Gives you the ability to visualise and switch between mantine themes and see how your components and pages will look with the theme applied!",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
