@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-mantine",
-  "version": "2.0.0",
+  "version": "2.0.19",
   "description": "Addon for storybook which gives all stories a MantineProvider. Gives you the ability to visualise and switch between mantine themes and see how your components and pages will look with the theme applied!",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -45,11 +45,6 @@
     "url": "https://github.com/josiahayres/storybook-addon-mantine/issues"
   },
   "homepage": "https://josiahayres.github.io/storybook-addon-mantine/",
-  "dependencies": {
-    "@emotion/react": "11.11.0",
-    "@mantine/core": "6.0.10",
-    "@mantine/hooks": "6.0.10"
-  },
   "peerDependencies": {
     "@emotion/react": "^11.0.0",
     "@mantine/core": "^6.0.0",

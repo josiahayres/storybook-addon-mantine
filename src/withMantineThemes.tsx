@@ -1,12 +1,19 @@
-import React, { useEffect, useMemo } from "react";
-
+import React from "react"
 import {
-  MantineProvider,
   MantineProviderProps,
   MantineThemeOverride,
 } from "@mantine/core";
+import { useEffect } from "react";
 import { useGlobals } from "@storybook/preview-api";
 import { PARAM_KEYS } from "./constants";
+import { ReactElement } from "react";
+import type {
+  Renderer,
+  PartialStoryFn as StoryFunction,
+  StoryContext,
+} from "@storybook/types";
+
+
 
 export type ThemeWithName = MantineThemeOverride & {
   id: string;
@@ -20,50 +27,36 @@ type Props = {
   >;
 };
 
-export const withMantineThemes = (props: Props) => {
-  return (Story: React.FC) => {
+export const withMantineThemes = (props: Props, ...rest: any) => {
+  return (
+    StoryFn: StoryFunction<Renderer>,
+    context: StoryContext<Renderer>
+  ) => {
     const [globals, updateGlobals] = useGlobals();
 
     useEffect(() => {
       const themes = globals[PARAM_KEYS.THEMES];
-      if (
-        !Array.isArray(themes) ||
-        (themes.length < 1 && props.themes.length > 0)
-      ) {
-        console.log("withMantineThemes - useEffect - updating themes", props);
-        updateGlobals({
-          [PARAM_KEYS.THEMES]: props.themes,
-          [PARAM_KEYS.SELECT_DATA]: props.themes.map((eachTheme, index) => ({
-            label: eachTheme?.name || `Theme ${index + 1}`,
-            value: eachTheme.id,
-          })),
-          [PARAM_KEYS.THEME_ID]: props.themes?.[0]?.id,
-        });
+      if (!props.themes || !Array.isArray(themes)) {
+        console.warn("No themes provided.");
+        return;
       }
-      if  (themes.length < 1 && props.themes.length > 0){
-        updateGlobals({
-          [PARAM_KEYS.THEMES]: props.themes,
-          [PARAM_KEYS.SELECT_DATA]: [{
-            label: `Light`,
-            value: 'light',
-          }],
-          [PARAM_KEYS.THEME_ID]: 'light',
-        });
+      if (themes.length < 1 && props.themes.length > 0) {
+        try {
+          updateGlobals({
+            [PARAM_KEYS.THEMES]: props.themes,
+            [PARAM_KEYS.SELECT_DATA]: props.themes.map((eachTheme, index) => ({
+              label: eachTheme?.name || `Theme ${index + 1}`,
+              value: eachTheme.id,
+            })),
+            [PARAM_KEYS.THEME_ID]: props.themes?.[0]?.id,
+            [PARAM_KEYS.PROVIDER_PROPS]: props?.mantineProviderProps
+          });
+        } catch (error) {
+          console.log("error calling update globals")
+        }
       }
     }, [props.themes]);
 
-    const theme = globals[PARAM_KEYS.THEMES].find(
-      (eachTheme: any) => eachTheme.id === globals[PARAM_KEYS.THEME_ID]
-    );
-
-    return (
-      <MantineProvider
-        withGlobalStyles
-        theme={theme}
-        {...props.mantineProviderProps}
-      >
-        <Story />
-      </MantineProvider>
-    );
-  };
+    return StoryFn(context)
+  }
 };

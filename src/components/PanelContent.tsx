@@ -1,17 +1,6 @@
 import React from "react";
-import { styled } from "@storybook/theming";
-import { Button } from "@storybook/components";
 
 import { Container, Select, SelectProps, Stack, Title } from "@mantine/core";
-
-export const RequestDataButton = styled(Button)({
-  marginTop: "1rem",
-});
-
-type Results = {
-  danger: any[];
-  warning: any[];
-};
 
 interface PanelContentProps {
   selectedThemeId: string;
@@ -37,7 +26,8 @@ export const PanelContent: React.FC<PanelContentProps> = ({
           title="Themes"
           placeholder="Select theme"
           value={selectedThemeId}
-          onChange={(value) => setSelectedTheme(value)}
+          onChange={(value) => value && setSelectedTheme(value)}
+          withinPortal
         ></Select>
       </Stack>
     </Container>

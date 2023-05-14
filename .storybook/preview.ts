@@ -21,7 +21,7 @@ export default preview;
 export const decorators = [
   withMantineThemes({
     themes: [
-      { id: "Dark", name: "Dark", colorScheme: "dark" },
+      { id: "Dark", name: "Dark", colorScheme: "dark", primaryColor:"orange" },
       {
         id: "light-green",
         name: "Light Green",

@@ -1,6 +1,7 @@
 import { addons, types } from "@storybook/manager-api";
 import { ADDON_ID, PANEL_ID } from "./constants";
 import { Panel } from "./Panel";
+import React from 'react'
 
 /**
  * Note: if you want to use JSX in this file, rename it to `manager.tsx`
@@ -14,6 +15,6 @@ addons.register(ADDON_ID, () => {
     type: types.PANEL,
     title: "Mantine Themes",
     match: ({ viewMode }) => viewMode === "story",
-    render: Panel,
+    render: (props)=>{return <Panel key={props.key} active={!!props.active} />},
   });
 });
