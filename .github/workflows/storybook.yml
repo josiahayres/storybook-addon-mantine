@@ -14,11 +14,4 @@ jobs:
         run: |
           npm install
           npm run build-storybook
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.6.2
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: main
-          FOLDER: docs-build
-          CLEAN: true
-          TARGET_FOLDER: docs
+          

@@ -21,7 +21,8 @@
     "prerelease": "zx scripts/prepublish-checks.mjs",
     "release": "yarn build && auto shipit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o docs-build"
+    "build-storybook": "storybook build -o docs-build",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "repository": {
     "type": "git",
