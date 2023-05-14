@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     react(),
     eslintPlugin({
-    exclude: [/virtual:/, /node_modules/] as any
+      exclude: ['/virtual:/**', 'node_modules/**'],
   })],
 });
 
