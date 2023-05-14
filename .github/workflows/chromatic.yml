@@ -4,7 +4,9 @@
 name: 'Chromatic'
 
 # Event for the workflow
-on: push
+on: 
+  push:
+    paths: ["stories/**", "src/stories/**"] # Trigger the action only when files change in the folders defined here
 
 # List of jobs
 jobs:
