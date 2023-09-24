@@ -19,4 +19,3 @@ export const Primary: Story = {
     label: "Switch",
   },
 };
- 
