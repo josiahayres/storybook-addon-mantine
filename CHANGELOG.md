@@ -1,3 +1,15 @@
+# v2.0.22 (Sun Sep 24 2023)
+
+#### 🐛 Bug Fix
+
+- Feature/mantine 7 [#9](https://github.com/josiahayres/storybook-addon-mantine/pull/9) ([@josiahayres](https://github.com/josiahayres))
+
+#### Authors: 1
+
+- Josiah Ayres ([@josiahayres](https://github.com/josiahayres))
+
+---
+
 # v2.0.21 (Sun May 14 2023)
 
 #### 🐛 Bug Fix
