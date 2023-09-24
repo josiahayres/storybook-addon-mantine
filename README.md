@@ -51,6 +51,8 @@ export const brandTheme = createTheme({
 Do this in your `.storybook/preview.tsx` file:
 
 ```ts
+import "@mantine/core/styles.css";
+
 import { withMantineThemes } from "storybook-addon-mantine";
 import { greenTheme, brandTheme } from "../themes";
 
@@ -101,7 +103,31 @@ See [Documentation Page](https://mantine.dev/theming/mantine-provider/#mantinepr
 
 Workaround is to configure mantine `useMantineColorScheme` hook in your storybook instance, see [Mantine documentation for all steps](https://mantine.dev/guides/storybook/).
 
-The key difference being to use
+Install Storybook addons:
+
+```shell
+npm install -D storybook-dark-mode @storybook/addon-styling storybook-addon-mantine
+```
+
+Add addons to .storybook/main.ts:
+
+```jsx
+import type { StorybookConfig } from "@storybook/react-vite";
+
+const config: StorybookConfig = {
+  // ... other config properties
+  addons: [
+    // ... other addons
+    "@storybook/addon-styling",
+    "storybook-dark-mode",
+    "storybook-addon-mantine",
+  ],
+};
+
+export default config;
+```
+
+Create your theme(s) as explained previously.
 
 ```jsx
 // Import styles of packages that you've installed.
@@ -112,7 +138,7 @@ import React, { useEffect } from "react";
 import { addons } from "@storybook/preview-api";
 import { DARK_MODE_EVENT_NAME } from "storybook-dark-mode";
 import { MantineProvider, useMantineColorScheme } from "@mantine/core";
-
+import { withMantineThemes } from "storybook-addon-mantine";
 import { greenTheme, brandTheme } from "../themes";
 
 const channel = addons.getChannel();
@@ -150,6 +176,10 @@ export const decorators = [
   }),
 ];
 ```
+
+That should be it!
+
+`npm run storybook`
 
 ## Versions
 
