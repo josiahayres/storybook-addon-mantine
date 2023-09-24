@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Container, Select, SelectProps, Stack, Title } from "@mantine/core";
+import type { ComboboxItem } from "@mantine/core";
 
 interface PanelContentProps {
   selectedThemeId: string;
   setSelectedTheme: (newThemeId: string) => void;
-  themeSelectData: SelectProps["data"];
+  themeSelectData: ComboboxItem[];
 }
 
 /**
@@ -18,18 +18,22 @@ export const PanelContent: React.FC<PanelContentProps> = ({
   themeSelectData,
 }) => {
   return (
-    <Container>
-      <Stack mt="md">
-        <Title order={2}>Mantine Themes</Title>
-        <Select
-          data={themeSelectData || []}
-          title="Themes"
-          placeholder="Select theme"
-          value={selectedThemeId}
-          onChange={(value) => value && setSelectedTheme(value)}
-          withinPortal
-        ></Select>
-      </Stack>
-    </Container>
+    // <Container>
+    //   <Stack mt="md">
+    //     <Title order={2}>Mantine Themes</Title>
+    <select
+      title="Themes"
+      placeholder="Select theme"
+      value={selectedThemeId}
+      onChange={(value) => value && setSelectedTheme(value.currentTarget.value)}
+    >
+      {themeSelectData?.map(({ value, label, disabled = false }) => (
+        <option value={value} disabled={disabled}>
+          {label}
+        </option>
+      ))}
+    </select>
+    //   </Stack>
+    // </Container>
   );
 };

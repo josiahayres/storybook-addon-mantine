@@ -1,6 +1,6 @@
 # storybook-addon-mantine
 
-Addon for storybook which wraps Mantine components with a MantineProvider. Allows you to switch between themes and see how your components and pages will look
+Switch between multiple mantine themes without restarting Storybook, and visualise your components / pages with each theme applied.
 
 ## How to use
 
@@ -12,63 +12,67 @@ npm i -D storybook-addon-mantine
 
 ### Register the addon
 
-Do this in your project's `.storybook/main.ts` or `.storybook/main.js` file:
+Do this in your project's `.storybook/main.ts` file:
 
 ```js
-module.exports = {
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+// .storybook/main.ts
+import type { StorybookConfig } from "@storybook/react-vite";
+
+const config: StorybookConfig = {
+  // ... other config properties
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
+    // ... other addons
     "storybook-addon-mantine",
   ],
-  framework: "@storybook/react",
 };
+
+export default config;
 ```
 
-### Pass the theme(s) to the addon
+### Themes
 
-Do this in your `.storybook/preview.js` file:
+```ts
+// src/themes.ts
+import { createTheme } from "@mantine/core";
 
-> **Info:** `id` is an new required key, must be unique string.
+export const greenTheme = createTheme({
+  primaryColor: "green",
+  // ... other theme override properties
+});
 
-> **Info:** `name` is an optional key you can provide here to override the name shown in the Storybook panel.
+export const brandTheme = createTheme({
+  fontFamily: "serif",
+  // ... other theme override properties
+});
+```
 
-```js
+### Pass your theme(s) to the addon
+
+Do this in your `.storybook/preview.tsx` file:
+
+```ts
+import "@mantine/core/styles.css";
+
 import { withMantineThemes } from "storybook-addon-mantine";
-import { lightTheme } from "../themes/light";
+import { greenTheme, brandTheme } from "../themes";
 
-// These props are passed to the MantineProvider used by all stories.
-const mantineProviderProps = {
-  withCSSVariables: false,
-  withGlobalStyles: true,
-  withNormalizeCSS: false,
-};
 export const decorators = [
   withMantineThemes({
     themes: [
-      { 
-        id: "Dark",
-        colorScheme: "dark" 
+      {
+        id: "brand-theme",
+        name: "Brand Theme",
+        ...brandTheme,
       },
       {
         id: "light-green",
         name: "Light Green Theme",
-        ...lightTheme
+        ...greenTheme,
       },
     ],
-    mantineProviderProps: {
-      withCSSVariables: true,
-      withGlobalStyles: true,
-      withNormalizeCSS: true,
-    },
   }),
 ];
 ```
-
-> **Info:** It's highly recommended to set `withGlobalStyles` to true if you use dark mode.  
-> To learn more about what it does, check out https://mantine.dev/theming/mantine-provider/#css-reset-and-global-styles
 
 ## Options
 
@@ -88,19 +92,107 @@ Additionally, each theme object must have:
 
 ### `mantineProviderProps`
 
-This is an object of props to pass to the `MantineProvider` component.
+This is an optional object of props to pass to the `MantineProvider` component.  
+See [Documentation Page](https://mantine.dev/theming/mantine-provider/#mantineprovider-props) for details.
 
-Typically it'll look like
+> Most use cases won't need to set anything for this object.
 
-```js static
-const mantineProviderProps = {
-  withCSSVariables: true,
-  withGlobalStyles: true,
-  withNormalizeCSS: true,
-};
+### Color Schemes (Dark/Light Mode) Support.
+
+> Cannot use mantine hooks in addons for storybook v7. Need storybook manager UI to be upgraded to react 18 (so addon can use the useId hook from react). Thi seems [scheduled for Storybook 8 release](https://github.com/storybookjs/storybook/milestone/89).
+
+Workaround is to configure mantine `useMantineColorScheme` hook in your storybook instance, see [Mantine documentation for all steps](https://mantine.dev/guides/storybook/).
+
+Install Storybook addons:
+
+```shell
+npm install -D storybook-dark-mode @storybook/addon-styling storybook-addon-mantine
 ```
 
+Add addons to .storybook/main.ts:
+
+```jsx
+import type { StorybookConfig } from "@storybook/react-vite";
+
+const config: StorybookConfig = {
+  // ... other config properties
+  addons: [
+    // ... other addons
+    "@storybook/addon-styling",
+    "storybook-dark-mode",
+    "storybook-addon-mantine",
+  ],
+};
+
+export default config;
+```
+
+Create your theme(s) as explained previously.
+
+```jsx
+// Import styles of packages that you've installed.
+// All packages except `@mantine/hooks` require styles imports
+import "@mantine/core/styles.css";
+
+import React, { useEffect } from "react";
+import { addons } from "@storybook/preview-api";
+import { DARK_MODE_EVENT_NAME } from "storybook-dark-mode";
+import { MantineProvider, useMantineColorScheme } from "@mantine/core";
+import { withMantineThemes } from "storybook-addon-mantine";
+import { greenTheme, brandTheme } from "../themes";
+
+const channel = addons.getChannel();
+
+function ColorSchemeWrapper({ children }: { children: React.ReactNode }) {
+  const { setColorScheme } = useMantineColorScheme();
+  const handleColorScheme = (value: boolean) =>
+    setColorScheme(value ? "dark" : "light");
+
+  useEffect(() => {
+    channel.on(DARK_MODE_EVENT_NAME, handleColorScheme);
+    return () => channel.off(DARK_MODE_EVENT_NAME, handleColorScheme);
+  }, [channel]);
+
+  return <>{children}</>;
+}
+
+export const decorators = [
+  (renderStory: any) => (
+    <ColorSchemeWrapper>{renderStory()}</ColorSchemeWrapper>
+  ),
+  withMantineThemes({
+    themes: [
+      {
+        id: "brand-theme",
+        name: "Brand Theme",
+        ...brandTheme,
+      },
+      {
+        id: "light-green",
+        name: "Light Green Theme",
+        ...greenTheme,
+      },
+    ],
+  }),
+];
+```
+
+That should be it!
+
+`npm run storybook`
+
 ## Versions
+
+### 3.0
+
+Support [Mantine v7 Release](https://v7.mantine.dev/guides/6x-to-7x).
+
+These are notable
+
+- [React 18+ Only](https://mantine.dev/changelog/7-0-0/#react-18-only)
+- [Color scheme not in theme object](https://mantine.dev/changelog/7-0-0/#built-in-color-scheme-manager)
+- [Create theme function](https://mantine.dev/changelog/7-0-0/#createtheme-function
+- [Theme object changes](https://mantine.dev/changelog/7-0-0/#theme-object-changes)
 
 ### 2.0
 

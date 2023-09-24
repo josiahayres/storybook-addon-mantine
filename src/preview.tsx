@@ -8,38 +8,40 @@
  *
  * https://storybook.js.org/docs/react/writing-stories/decorators
  */
-import { PARAM_KEYS } from "./constants";
-import {
-  MantineProvider,
-} from "@mantine/core";
 
-import React from 'react'
+import { PARAM_KEYS } from "./constants";
+import { MantineProvider } from "@mantine/core";
+
+import React from "react";
 import { Preview } from "@storybook/react";
+
 /**
  * Note: if you want to use JSX in this file, rename it to `preview.tsx`
  * and update the entry prop in tsup.config.ts to use "src/preview.tsx",
  */
 
 const preview: Preview = {
-  decorators: [(Story, context) => {
-    return (
-      <div id="preview.tsx">
-        <MantineProvider
-          {...context.globals[PARAM_KEYS.PROVIDER_PROPS]}
-          theme={context.globals[PARAM_KEYS.THEMES]?.find(
-            (each: any) => each.id === context.globals[PARAM_KEYS.THEME_ID]
-          )}
-        >
-          <Story />
-        </MantineProvider>
-      </div>
-    );
-  }],
+  decorators: [
+    (RenderStory, context) => {
+      return (
+        <div id="storybook-addon-mantine--preview">
+          <MantineProvider
+            {...context.globals[PARAM_KEYS.PROVIDER_PROPS]}
+            theme={context.globals[PARAM_KEYS.THEMES]?.find(
+              (each: any) => each.id === context.globals[PARAM_KEYS.THEME_ID]
+            )}
+          >
+            <RenderStory />
+          </MantineProvider>
+        </div>
+      );
+    },
+  ],
   globals: {
     [PARAM_KEYS.THEMES]: [],
     [PARAM_KEYS.SELECT_DATA]: [],
     [PARAM_KEYS.THEME_ID]: null,
-    [PARAM_KEYS.PROVIDER_PROPS]: {}
+    [PARAM_KEYS.PROVIDER_PROPS]: {},
   },
 };
 

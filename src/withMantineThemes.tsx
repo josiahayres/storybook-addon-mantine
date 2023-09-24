@@ -1,19 +1,14 @@
-import React from "react"
-import {
-  MantineProviderProps,
-  MantineThemeOverride,
-} from "@mantine/core";
+import React from "react";
+import type { MantineProviderProps, MantineThemeOverride } from "@mantine/core";
 import { useEffect } from "react";
 import { useGlobals } from "@storybook/preview-api";
 import { PARAM_KEYS } from "./constants";
-import { ReactElement } from "react";
+
 import type {
   Renderer,
   PartialStoryFn as StoryFunction,
   StoryContext,
 } from "@storybook/types";
-
-
 
 export type ThemeWithName = MantineThemeOverride & {
   id: string;
@@ -28,10 +23,7 @@ type Props = {
 };
 
 export const withMantineThemes = (props: Props, ...rest: any) => {
-  return (
-    StoryFn: any,
-    context: StoryContext<Renderer>
-  ) => {
+  return (StoryFn: any, context: StoryContext<Renderer>) => {
     const [globals, updateGlobals] = useGlobals();
 
     useEffect(() => {
@@ -49,14 +41,14 @@ export const withMantineThemes = (props: Props, ...rest: any) => {
               value: eachTheme.id,
             })),
             [PARAM_KEYS.THEME_ID]: props.themes?.[0]?.id,
-            [PARAM_KEYS.PROVIDER_PROPS]: props?.mantineProviderProps
+            [PARAM_KEYS.PROVIDER_PROPS]: props?.mantineProviderProps,
           });
         } catch (error) {
-          console.log("error calling update globals")
+          console.log("error calling update globals");
         }
       }
     }, [props.themes]);
 
-    return <StoryFn {...context} />
-  }
+    return <StoryFn {...context} />;
+  };
 };
