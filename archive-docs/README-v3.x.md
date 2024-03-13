@@ -183,24 +183,8 @@ That should be it!
 
 ## Versions
 
-This table should help you with picking the correct version of `storybook-addon-mantine`:
-
-| Storybook Version | Mantine Version | storybook-addon-mantine Version |
-|:-----------------:|:---------------:|:--------------:|
-| 8                 | 7               | 4.x            |
-| 7                 | 7               | 3.0.1          |
-| 7                 | 6               | 2.0.21         |
-| 6                 | 6               | 1.3            |
-| 6                 | 5               | 1.2            |
-| 6                 | 4               | 1.0            |
-
-### 4.0
-
-Only supports [Storybook 8](https://storybook.js.org/blog/storybook-8/) and Mantine 7.
-
 ### 3.0
 
-Support Storybook 7.
 Support [Mantine v7 Release](https://v7.mantine.dev/guides/6x-to-7x).
 
 These are notable
