@@ -5,8 +5,7 @@ import { useGlobals } from "@storybook/preview-api";
 import { PARAM_KEYS } from "./constants";
 
 import type {
-  Renderer,
-  PartialStoryFn as StoryFunction,
+  Renderer, 
   StoryContext,
 } from "@storybook/types";
 
