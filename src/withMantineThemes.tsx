@@ -4,10 +4,7 @@ import { useEffect } from "react";
 import { useGlobals } from "@storybook/preview-api";
 import { PARAM_KEYS } from "./constants";
 
-import type {
-  Renderer, 
-  StoryContext,
-} from "@storybook/types";
+import type { Renderer, StoryContext } from "@storybook/types";
 
 export type ThemeWithName = MantineThemeOverride & {
   id: string;
@@ -48,6 +45,6 @@ export const withMantineThemes = (props: Props, ...rest: any) => {
       }
     }, [props.themes]);
 
-    return <StoryFn {...context} />;
+    return StoryFn();
   };
 };
