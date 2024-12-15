@@ -5,16 +5,16 @@ import type { ProjectAnnotations, Renderer } from "storybook/internal/types";
 
 const preview: ProjectAnnotations<Renderer> = {
   decorators: [
-    (RenderStory, context) => {
+    (RenderStory, { globals }) => {
       return (
         <div id="storybook-addon-mantine--preview">
           <MantineProvider
-            {...context.globals[PARAM_KEYS.PROVIDER_PROPS]}
-            theme={context.globals[PARAM_KEYS.THEMES]?.find(
-              (each: any) => each.id === context.globals[PARAM_KEYS.THEME_ID]
+            {...globals[PARAM_KEYS.PROVIDER_PROPS]}
+            theme={globals[PARAM_KEYS.THEMES]?.find(
+              (each: any) => each.id === globals[PARAM_KEYS.THEME_ID]
             )}
           >
-            {RenderStory()}
+            {RenderStory}
           </MantineProvider>
         </div>
       );
