@@ -22,7 +22,7 @@
     "prerelease": "zx scripts/prepublish-checks.mjs",
     "release": "npm run build && auto shipit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o docs-build",
+    "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes"
   },
   "repository": {
@@ -46,10 +46,13 @@
     "url": "https://github.com/josiahayres/storybook-addon-mantine/issues"
   },
   "homepage": "https://josiahayres.github.io/storybook-addon-mantine/",
+  "overrides": {
+    "storybook": "0.0.0-pr-26654-sha-49d01553"
+  },
   "peerDependencies": {
     "@mantine/core": "^7.0.0",
     "@mantine/hooks": "^7.0.0",
-    "storybook": "^8.0.0",
+    "storybook": "^8.0.0 || 0.0.0-pr-26654-sha-49d01553",
     "@storybook/react": "^8.0.0"
   },
   "storybook": {
@@ -94,7 +97,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rimraf": "^6.0.1",
-    "storybook": "^8.4.7",
+    "storybook": "0.0.0-pr-26654-sha-49d01553",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",
     "vite": "^6.0.3",
