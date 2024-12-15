@@ -1,10 +1,11 @@
 import React from "react";
 import { PARAM_KEYS } from "./constants";
 import { MantineProvider } from "@mantine/core";
+import type { ProjectAnnotations, Renderer } from "storybook/internal/types";
 
-const preview: any = {
+const preview: ProjectAnnotations<Renderer> = {
   decorators: [
-    (RenderStory: any, context: any) => {
+    (RenderStory, context) => {
       return (
         <div id="storybook-addon-mantine--preview">
           <MantineProvider
@@ -13,7 +14,7 @@ const preview: any = {
               (each: any) => each.id === context.globals[PARAM_KEYS.THEME_ID]
             )}
           >
-            <RenderStory />
+            {RenderStory()}
           </MantineProvider>
         </div>
       );
