@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useGlobals } from "@storybook/manager-api";
 import { AddonPanel } from "@storybook/components";
 import { PARAM_KEYS } from "./constants";
@@ -8,7 +8,7 @@ interface PanelProps {
   active: boolean;
 }
 
-export const Panel: React.FC<PanelProps> = (props) => {
+export const Panel: React.FC<PanelProps> = memo(function MyPanel(props) {
   const [globals, updateGlobals] = useGlobals();
 
   const themeId = globals[PARAM_KEYS.THEME_ID];
@@ -27,4 +27,4 @@ export const Panel: React.FC<PanelProps> = (props) => {
       />
     </AddonPanel>
   );
-};
+});

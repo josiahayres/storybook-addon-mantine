@@ -4,7 +4,11 @@ import { useEffect } from "react";
 import { useGlobals } from "@storybook/preview-api";
 import { PARAM_KEYS } from "./constants";
 
-import type { Renderer, StoryContext } from "@storybook/types";
+import type {
+  Renderer,
+  StoryContext,
+  PartialStoryFn as StoryFunction,
+} from "storybook/internal/types";
 
 export type ThemeWithName = MantineThemeOverride & {
   id: string;
@@ -18,8 +22,11 @@ type Props = {
   >;
 };
 
-export const withMantineThemes = (props: Props, ...rest: any) => {
-  return (StoryFn: any, context: StoryContext<Renderer>) => {
+export const withMantineThemes = (props: Props) => {
+  return (
+    StoryFn: StoryFunction<Renderer>,
+    context: StoryContext<Renderer>
+  ) => {
     const [globals, updateGlobals] = useGlobals();
 
     useEffect(() => {
