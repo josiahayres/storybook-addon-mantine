@@ -25,7 +25,7 @@ export const PanelContent: React.FC<PanelContentProps> = ({
     >
       {themeSelectData?.map(({ value, label, disabled = false }) => (
         <option value={value} disabled={disabled}>
-          {label}
+          {`${label}`}
         </option>
       ))}
     </select>

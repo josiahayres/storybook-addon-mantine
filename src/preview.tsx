@@ -14,8 +14,7 @@ const preview: ProjectAnnotations<Renderer> = {
               (each: any) => each.id === globals[PARAM_KEYS.THEME_ID]
             )}
           >
-            RenderStory
-            {JSON.stringify(RenderStory)}
+            {RenderStory}
           </MantineProvider>
         </div>
       );
