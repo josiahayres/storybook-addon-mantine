@@ -1,11 +1,14 @@
 #!/usr/bin/env zx
 
-const packageJson = require("../package.json");
-const boxen = require("boxen");
-const dedent = require("dedent");
+import boxen from "boxen";
+import dedent from "dedent";
 
-const name = packageJson.name;
-const displayName = packageJson.storybook.displayName;
+const loadJSON = (path) =>
+  JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
+
+const a = loadJSON("../package.json");
+const name = a.name;
+const displayName = a.storybook.displayName;
 
 let exitCode = 0;
 $.verbose = false;
