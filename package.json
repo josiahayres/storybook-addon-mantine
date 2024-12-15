@@ -106,19 +106,15 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./manager": {
-      "types": "./dist/manager.d.ts",
-      "import": "./dist/manager.mjs",
-      "require": "./dist/manager.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./preview": {
       "types": "./dist/preview.d.ts",
-      "import": "./dist/preview.mjs",
-      "require": "./dist/preview.js"
+      "import": "./dist/preview.js",
+      "require": "./dist/preview.cjs"
     },
+    "./manager": "./dist/manager.js",
     "./package.json": "./package.json"
   },
   "bundler": {
