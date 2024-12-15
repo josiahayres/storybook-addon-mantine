@@ -2,6 +2,7 @@
   "name": "storybook-addon-mantine",
   "description": "Switch between multiple mantine themes without restarting Storybook, and visualise your components / pages with each theme applied.",
   "version": "4.1.0-beta.1",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -48,7 +49,7 @@
   "peerDependencies": {
     "@mantine/core": "^7.0.0",
     "@mantine/hooks": "^7.0.0",
-    "@storybook/blocks": "^8.0.0"
+    "storybook": "^8.0.0"
   },
   "storybook": {
     "displayName": "storybook-addon-mantine",
@@ -103,20 +104,31 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./manager": {
-      "require": "./dist/manager.js",
+      "types": "./dist/manager.d.ts",
       "import": "./dist/manager.mjs",
-      "types": "./dist/manager.d.ts"
+      "require": "./dist/manager.js"
     },
     "./preview": {
-      "require": "./dist/preview.js",
+      "types": "./dist/preview.d.ts",
       "import": "./dist/preview.mjs",
-      "types": "./dist/preview.d.ts"
+      "require": "./dist/preview.js"
     },
     "./package.json": "./package.json"
+  },
+  "bundler": {
+    "exportEntries": [
+      "src/index.ts"
+    ],
+    "managerEntries": [
+      "src/manager.tsx"
+    ],
+    "previewEntries": [
+      "src/preview.tsx"
+    ]
   }
 }
