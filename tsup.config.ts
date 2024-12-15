@@ -46,7 +46,7 @@ export default defineConfig(async (options) => {
   const commonConfig: Options = {
     splitting: false,
     minify: !options.watch,
-    treeshake: true,
+    treeshake: false,
     sourcemap: true,
     clean: options.watch ? false : true,
   };

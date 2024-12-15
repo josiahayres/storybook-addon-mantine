@@ -13,11 +13,10 @@ import { PARAM_KEYS } from "./constants";
 import { MantineProvider } from "@mantine/core";
 
 import React from "react";
-import { Preview } from "@storybook/react";
 
-const preview: Preview = {
+const preview: any = {
   decorators: [
-    (RenderStory, context) => {
+    (RenderStory: any, context: any) => {
       return (
         <div id="storybook-addon-mantine--preview">
           <MantineProvider
