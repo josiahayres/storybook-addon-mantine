@@ -1,7 +1,7 @@
 {
   "name": "storybook-addon-mantine",
   "description": "Switch between multiple mantine themes without restarting Storybook, and visualise your components / pages with each theme applied.",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -55,8 +55,8 @@
     "@storybook/preview-api": "^8.0.0",
     "@storybook/theming": "^8.0.0",
     "@storybook/types": "^8.0.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "storybook": {
     "displayName": "storybook-addon-mantine",
