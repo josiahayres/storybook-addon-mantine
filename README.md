@@ -194,7 +194,7 @@ This table should help you with picking the correct version of `storybook-addon-
 | 6                 | 5               | 1.2            |
 | 6                 | 4               | 1.0            |
 
-### 4.1
+### 5.0
 
 Support React 19.
 
