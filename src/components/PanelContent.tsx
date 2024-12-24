@@ -18,12 +18,8 @@ export const PanelContent: React.FC<PanelContentProps> = ({
   themeSelectData,
 }) => {
   return (
-    // <Container>
-    //   <Stack mt="md">
-    //     <Title order={2}>Mantine Themes</Title>
     <select
       title="Themes"
-      placeholder="Select theme"
       value={selectedThemeId}
       onChange={(value) => value && setSelectedTheme(value.currentTarget.value)}
     >
@@ -33,7 +29,5 @@ export const PanelContent: React.FC<PanelContentProps> = ({
         </option>
       ))}
     </select>
-    //   </Stack>
-    // </Container>
   );
 };

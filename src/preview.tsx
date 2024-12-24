@@ -8,19 +8,19 @@
  *
  * https://storybook.js.org/docs/react/writing-stories/decorators
  */
-
+import type { ProjectAnnotations, Renderer } from "storybook/internal/types";
 import { PARAM_KEYS } from "./constants";
 import { MantineProvider } from "@mantine/core";
 
 import React from "react";
-import { Preview } from "@storybook/react";
+// import { withGlobals, withTheme } from "./withGlobals";
 
 /**
  * Note: if you want to use JSX in this file, rename it to `preview.tsx`
  * and update the entry prop in tsup.config.ts to use "src/preview.tsx",
  */
 
-const preview: Preview = {
+const preview: ProjectAnnotations<Renderer> = {
   decorators: [
     (RenderStory, context) => {
       return (
@@ -28,16 +28,16 @@ const preview: Preview = {
           <MantineProvider
             {...context.globals[PARAM_KEYS.PROVIDER_PROPS]}
             theme={context.globals[PARAM_KEYS.THEMES]?.find(
-              (each: any) => each.id === context.globals[PARAM_KEYS.THEME_ID]
+              (each: any) => each.id === context.globals[PARAM_KEYS.THEME_ID],
             )}
           >
-            <RenderStory />
+            {RenderStory()}
           </MantineProvider>
         </div>
       );
     },
   ],
-  globals: {
+  initialGlobals: {
     [PARAM_KEYS.THEMES]: [],
     [PARAM_KEYS.SELECT_DATA]: [],
     [PARAM_KEYS.THEME_ID]: null,
