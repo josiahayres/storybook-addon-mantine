@@ -1,33 +1,7 @@
 {
   "name": "storybook-addon-mantine",
+  "version": "6.0.0",
   "description": "Switch between multiple mantine themes without restarting Storybook, and visualise your components / pages with each theme applied.",
-  "version": "5.0.0",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist/**/*",
-    "README.md",
-    "*.js",
-    "*.d.ts"
-  ],
-  "scripts": {
-    "clean": "rimraf ./dist",
-    "prebuild": "npm run clean",
-    "build": "tsup",
-    "build:watch": "npm run build --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "run-p build:watch 'storybook --quiet'",
-    "prerelease": "zx scripts/prepublish-checks.mjs",
-    "release": "npm run build && auto shipit",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o docs-build",
-    "chromatic": "chromatic --exit-zero-on-changes"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/josiahayres/storybook-addon-mantine"
-  },
   "keywords": [
     "storybook-addons",
     "style",
@@ -39,91 +13,109 @@
     "react",
     "theme"
   ],
-  "author": "josiahayres <josiahayres@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/josiahayres/storybook-addon-mantine/issues"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/josiahayres/storybook-addon-mantine"
   },
-  "homepage": "https://josiahayres.github.io/storybook-addon-mantine/",
+  "type": "module",
+  "license": "MIT",
+  "author": "josiahayres <josiahayres@gmail.com>",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./preview": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/preview.js",
+      "require": "./dist/preview.cjs"
+    },
+    "./preset": "./dist/preset.cjs",
+    "./manager": "./dist/manager.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "npm run build -- --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "run-p build:watch \"storybook --quiet\"",
+    "prerelease": "zx scripts/prepublish-checks.js",
+    "release": "npm run build && auto shipit",
+    "eject-ts": "zx scripts/eject-typescript.js",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic --exit-zero-on-changes"
+  },
+  "dependencies": {
+    "@storybook/icons": "^1.2.10"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/addon-interactions": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/addon-links": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/blocks": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/react": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/react-vite": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/test": "0.0.0-pr-26654-sha-49d01553",
+    "@storybook/types": "0.0.0-pr-26654-sha-49d01553",
+    "@mantine/core": "^7.6.2",
+    "@mantine/hooks": "^7.6.2",
+    "@types/node": "^18.15.0",
+    "@types/react": "^18.2.65",
+    "@types/react-dom": "^18.2.21",
+    "@vitejs/plugin-react": "^4.2.1",
+    "auto": "^11.1.1",
+    "boxen": "^7.1.1",
+    "dedent": "^1.5.1",
+    "npm-run-all2": "^6.2.3",
+    "prettier": "^3.3.3",
+    "prompts": "^2.4.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "0.0.0-pr-26654-sha-49d01553",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vite": "^5.3.5",
+    "zx": "^7.2.3"
+  },
   "peerDependencies": {
+    "storybook": "^8.3.0 || 0.0.0-pr-26654-sha-49d01553",
     "@mantine/core": "^7.0.0",
-    "@mantine/hooks": "^7.0.0",
-    "@storybook/blocks": "^8.0.0",
-    "@storybook/components": "^8.0.0",
-    "@storybook/core-events": "^8.0.0",
-    "@storybook/manager-api": "^8.0.0",
-    "@storybook/preview-api": "^8.0.0",
-    "@storybook/theming": "^8.0.0",
-    "@storybook/types": "^8.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@mantine/hooks": "^7.0.0"
+  },
+  "overrides": {
+    "storybook": "0.0.0-pr-26654-sha-49d01553"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bundler": {
+    "exportEntries": [
+      "src/index.ts"
+    ],
+    "managerEntries": [
+      "src/manager.tsx"
+    ],
+    "previewEntries": [
+      "src/preview.tsx"
+    ]
   },
   "storybook": {
     "displayName": "storybook-addon-mantine",
-    "unsupportedFrameworks": [
-      "vue",
-      "angular",
-      "web-components",
-      "ember",
-      "html",
-      "svelte",
-      "preact",
-      "aurelia",
-      "marionette",
-      "react-native"
-    ],
     "supportedFrameworks": [
       "react"
     ],
     "icon": "https://raw.githubusercontent.com/mantinedev/mantine/master/docs/src/images/og-image.png"
   },
-  "devDependencies": {
-    "@mantine/core": "^7.6.2",
-    "@mantine/hooks": "^7.6.2",
-    "@storybook/addon-essentials": "8.0.0",
-    "@storybook/addon-interactions": "8.0.0",
-    "@storybook/addon-links": "8.0.0",
-    "@storybook/react": "8.0.0",
-    "@storybook/react-vite": "8.0.0",
-    "@storybook/testing-library": "0.2.2",
-    "@types/node": "^20.11.26",
-    "@types/react": "^18.2.65",
-    "@vitejs/plugin-react": "^4.2.1",
-    "auto": "^10.46.0",
-    "boxen": "^5.1.2",
-    "dedent": "^1.5.1",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.2.5",
-    "prompts": "^2.4.2",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rimraf": "^5.0.5",
-    "storybook": "^8.0.0",
-    "tsup": "^6.7.0",
-    "typescript": "^5.4.2",
-    "vite": "^4.5.2",
-    "zx": "^1.15.2"
+  "bugs": {
+    "url": "https://github.com/josiahayres/storybook-addon-mantine/issues"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./manager": {
-      "require": "./dist/manager.js",
-      "import": "./dist/manager.mjs",
-      "types": "./dist/manager.d.ts"
-    },
-    "./preview": {
-      "require": "./dist/preview.js",
-      "import": "./dist/preview.mjs",
-      "types": "./dist/preview.d.ts"
-    },
-    "./package.json": "./package.json"
-  }
+  "homepage": "https://josiahayres.github.io/storybook-addon-mantine/"
 }
