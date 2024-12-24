@@ -194,9 +194,13 @@ This table should help you with picking the correct version of `storybook-addon-
 | 6                 | 5               | 1.2            |
 | 6                 | 4               | 1.0            |
 
+### 4.1
+
+Support React 19.
+
 ### 4.0
 
-Only supports [Storybook 8](https://storybook.js.org/blog/storybook-8/) and Mantine 7.
+Only supports [Storybook 8](https://storybook.js.org/blog/storybook-8/) and Mantine 7. Use this version if using React 18.
 
 ### 3.0
 
