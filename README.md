@@ -185,14 +185,16 @@ That should be it!
 
 This table should help you with picking the correct version of `storybook-addon-mantine`:
 
-| Storybook Version | Mantine Version | storybook-addon-mantine Version |
-|:-----------------:|:---------------:|:--------------:|
-| 8                 | 7               | 4.x            |
-| 7                 | 7               | 3.0.1          |
-| 7                 | 6               | 2.0.21         |
-| 6                 | 6               | 1.3            |
-| 6                 | 5               | 1.2            |
-| 6                 | 4               | 1.0            |
+| Storybook Version | Mantine Version | React | storybook-addon-mantine Version |
+|:-----------------:|:---------------:|:--------------:|:--------------:|
+| 9                 | 8               | 19 | 6.x            |
+| 8                 | 8               | 19 | 5.x            |
+| 8                 | 7               | 18 | 4.x            |
+| 7                 | 7               | 18 | 3.0.1          |
+| 7                 | 6               | 18 | 2.0.21         |
+| 6                 | 6               | 18 | 1.3            |
+| 6                 | 5               | 18 | 1.2            |
+| 6                 | 4               | 18 | 1.0            |
 
 ### 5.0
 

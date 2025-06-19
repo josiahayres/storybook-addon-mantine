@@ -37,7 +37,7 @@ const preview: Preview = {
       );
     },
   ],
-  globals: {
+  initialGlobals: {
     [PARAM_KEYS.THEMES]: [],
     [PARAM_KEYS.SELECT_DATA]: [],
     [PARAM_KEYS.THEME_ID]: null,

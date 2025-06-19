@@ -23,8 +23,7 @@ export const Primary: Story = {
 export const Outline: Story = {
   args: {
     variant: "outline",
-    size:'sm',
+    size: "sm",
     children: "Button",
   },
 };
- 
