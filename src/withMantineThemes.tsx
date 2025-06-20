@@ -1,13 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { MantineProviderProps, MantineThemeOverride } from "@mantine/core";
-import { useEffect } from "react";
-import { useGlobals } from "@storybook/preview-api";
+import type { Renderer, StoryContext } from "storybook/internal/types";
+import { useGlobals } from "storybook/preview-api";
 import { PARAM_KEYS } from "./constants";
-
-import type {
-  Renderer, 
-  StoryContext,
-} from "@storybook/types";
 
 export type ThemeWithName = MantineThemeOverride & {
   id: string;

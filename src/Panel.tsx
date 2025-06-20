@@ -1,6 +1,6 @@
 import React from "react";
-import { useGlobals } from "@storybook/manager-api";
-import { AddonPanel } from "@storybook/components";
+import { useGlobals } from "storybook/manager-api";
+import { AddonPanel } from "storybook/internal/components";
 import { PARAM_KEYS } from "./constants";
 import { PanelContent } from "./components/PanelContent";
 

@@ -1,9 +1,9 @@
-import type { Preview } from "@storybook/react";
-import { withMantineThemes } from "../src/withMantineThemes";
-import { addons } from "@storybook/preview-api";
-import { useMantineColorScheme } from "@mantine/core";
 import React, { useEffect } from "react";
+import type { Preview } from "@storybook/react";
+import { useMantineColorScheme } from "@mantine/core";
+import { addons } from "storybook/preview-api";
 
+import { withMantineThemes } from "../src/withMantineThemes";
 import "@mantine/core/styles.css";
 
 const channel = addons.getChannel();
