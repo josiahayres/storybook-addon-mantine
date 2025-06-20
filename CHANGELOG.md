@@ -1,3 +1,17 @@
+# v4.0.3 (Fri Jun 20 2025)
+
+#### 🐛 Bug Fix
+
+- storybook 9 support [#20](https://github.com/josiahayres/storybook-addon-mantine/pull/20) ([@josiahayres](https://github.com/josiahayres))
+- React 19 [#16](https://github.com/josiahayres/storybook-addon-mantine/pull/16) ([@josiahayres](https://github.com/josiahayres))
+- Support react 19 [#15](https://github.com/josiahayres/storybook-addon-mantine/pull/15) ([@josiahayres](https://github.com/josiahayres))
+
+#### Authors: 1
+
+- Josiah Ayres ([@josiahayres](https://github.com/josiahayres))
+
+---
+
 # v3.0.2 (Thu Mar 14 2024)
 
 #### 🐛 Bug Fix
