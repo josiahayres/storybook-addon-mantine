@@ -1124,11 +1124,6 @@
     "@storybook/csf-plugin" "9.0.12"
     ts-dedent "^2.0.0"
 
-"@storybook/components@^8.6.14":
-  version "8.6.14"
-  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-8.6.14.tgz#3cfc5e120f3dc38990fc37b34a22eff1e3f4bdfb"
-  integrity sha512-HNR2mC5I4Z5ek8kTrVZlIY/B8gJGs5b3XdZPBPBopTIN6U/YHXiDyOjY3JlaS4fSG1fVhp/Qp1TpMn1w/9m1pw==
-
 "@storybook/csf-plugin@9.0.12":
   version "9.0.12"
   resolved "https://registry.yarnpkg.com/@storybook/csf-plugin/-/csf-plugin-9.0.12.tgz#70d66934938e1fd79f2b570e09ce0ffe79492d2d"
